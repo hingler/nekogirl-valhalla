@@ -1,15 +1,11 @@
 import { Hashable } from "../Hashable";
+import { Pair } from "./Pair";
 
 const MAX_EPSILON = 2.5;
 
-export interface Pair<T extends Hashable, U> {
-  key: T;
-  value: U;
-}
-
 // todo: invent a funny name for my own mini "std" where i can place some of these tools
 
-class HashMapIterator<T extends Hashable, U> implements Iterator<Pair<T, U>> {
+class HashMapIterator<T extends Hashable<T>, U> implements Iterator<Pair<T, U>> {
   private tableIterator: Iterator<Array<Pair<T, U>>>;
   private subtableIterator: Iterator<Pair<T, U>>;
   private table: Array<Array<Pair<T, U>>>;
@@ -53,7 +49,7 @@ class HashMapIterator<T extends Hashable, U> implements Iterator<Pair<T, U>> {
   }
 }
 
-export class HashMap<T extends Hashable, U> implements Iterable<Pair<T, U>> {
+export class HashMap<T extends Hashable<T>, U> implements Iterable<Pair<T, U>> {
   private hashTable: Array<Array<Pair<T, U>>>;
   private size_: number;
 
@@ -71,41 +67,57 @@ export class HashMap<T extends Hashable, U> implements Iterable<Pair<T, U>> {
     return new HashMapIterator(this.hashTable);
   }
 
+
+  /**
+   * Inserts a new pair into this map.
+   * @param key - hashable key
+   * @param value - associated value
+   * @returns - the previously stored value under this key, if one exists
+   */
   put(key: T, value: U) : U {
     if (this.size_ / this.hashTable.length > MAX_EPSILON) {
       this.rehash();
     }
 
-    const hash = key.hash();
-    const index = (hash % this.hashTable.length);
+    const res : Pair<T, U> = {
+      "key": key.copy(),
+      "value": value
+    };
 
-    // ensure arr is instantiated
+    return this.put_nocopy(res);
+  }
+
+  private put_nocopy(pair: Pair<T, U>) {
+    const hash = pair.key.hash();
+    const index = hash % this.hashTable.length;
+
     if (!this.hashTable[index]) {
       this.hashTable[index] = [];
     }
 
     const dest = this.hashTable[index];
-    const res : Pair<T, U> = {
-      "key": key,
-      "value": value
-    };
 
     for (let i = 0; i < dest.length; i++) {
       const test = dest[i];
-      if (test.key.equals(res.key)) {
+      if (test.key.equals(pair.key)) {
         // duplicate encountered
         const oldVal = dest[i];
-        dest[i] = res;
+        dest[i] = pair;
         return oldVal.value;
       }
     }
 
     // no dupe, insert straight
-    dest.push(res);
+    dest.push(pair);
     this.size_++;
     return null;
   }
 
+  /**
+   * Fetches the value associated with a stored key.
+   * @param key - The key we wish to search on.
+   * @returns the value associated with this key, if one exists -- otherwise, null.
+   */
   get(key: T) : U | null {
     const index = key.hash() % this.hashTable.length;
     const dest = this.hashTable[index];
@@ -122,6 +134,11 @@ export class HashMap<T extends Hashable, U> implements Iterable<Pair<T, U>> {
     return null;
   }
 
+  /**
+   * 
+   * @param key - search key
+   * @returns true if the key is present in this map, false otherwise.
+   */
   has(key: T) : boolean {
     const index = key.hash() % this.hashTable.length;
     const dest = this.hashTable[index];
@@ -138,6 +155,9 @@ export class HashMap<T extends Hashable, U> implements Iterable<Pair<T, U>> {
     return false;
   }
 
+  /**
+   * @returns the number of elements stored in this map.
+   */
   get size() {
     return this.size_;
   }
