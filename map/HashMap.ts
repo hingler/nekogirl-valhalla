@@ -1,4 +1,4 @@
-import { Hashable } from "./Hashable";
+import { Hashable } from "../Hashable";
 
 const MAX_EPSILON = 2.5;
 
