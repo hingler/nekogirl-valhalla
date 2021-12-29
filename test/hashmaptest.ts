@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { Hashable } from "../Hashable";
-import { HashMap } from "../map/HashMap";
+import { Hashable } from "../ts/Hashable";
+import { HashMap } from "../ts/map/HashMap";
 
 class HashTest implements Hashable<HashTest> {
   readonly value: number;

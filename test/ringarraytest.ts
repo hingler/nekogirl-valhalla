@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { RingArray } from "../array/RingArray";
+import { RingArray } from "../ts/array/RingArray";
 
 describe("RingArrayTest", function() {
   it("Should instantiate properly", function() {
