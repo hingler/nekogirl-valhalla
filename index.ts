@@ -1,7 +1,6 @@
 import { HashMap } from "./ts/map/HashMap";
 import { HashSet } from "./ts/set/HashSet";
 import { RingArray } from "./ts/array/RingArray";
-
 import { Hashable } from "./ts/Hashable";
 
 // compile wasm scripts
