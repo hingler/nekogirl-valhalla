@@ -6,9 +6,7 @@
   "directories": {
     "test": "test"
   },
-
   "type": "module",
-  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "rebuild-wasm": ""
@@ -16,5 +14,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gl-matrix": "^3.4.3"
   }
 }
