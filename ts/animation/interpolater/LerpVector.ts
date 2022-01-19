@@ -16,7 +16,7 @@ export class LerpVector {
   static copy<T extends Array<number> | Float32Array,
               U extends Array<number> | Float32Array>
   (out: T, input: U) {
-    for (let i = 0; i < out.length; i++) {
+    for (let i = 0; i < input.length; i++) {
       out[i] = input[i];
     }
 
