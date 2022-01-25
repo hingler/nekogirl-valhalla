@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "npm run tsc --declaration",
+    "prepare": "npx run tsc --declaration",
     "rebuild-wasm": ""
   },
   "author": "",
