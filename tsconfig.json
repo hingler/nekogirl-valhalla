@@ -4,6 +4,15 @@
     "outDir": ".",
     "module": "CommonJS",
     "target": "ES2015",
-    "baseUrl": "./ts",
+    "baseUrl": ".",
   },
+
+  "include": [
+    "./ts/**/*"
+  ],
+  
+  "exclude": [
+    "./test/**/*",
+    "./wasm/**/*"
+  ]
 }
