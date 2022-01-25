@@ -9,11 +9,15 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc --declaration",
     "rebuild-wasm": ""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "gl-matrix": "^3.4.3"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.5"
   }
 }

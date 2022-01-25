@@ -1,5 +1,5 @@
 import { mat3, mat4, ReadonlyVec3, vec3 } from "gl-matrix";
-import { RingArray } from "nekogirl-valhalla/array/RingArray";
+import { RingArray } from "nekogirl-valhalla/ts/array/RingArray";
 import { BezierCurve } from "./BezierCurve";
 import { ParametricCurve } from "./ParametricCurve";
 
