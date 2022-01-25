@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { vec3, vec4 } from "gl-matrix";
-import { LinearVectorSampler } from "../ts/animation/samplers/LinearVectorSampler";
+import { LinearVectorSampler } from "../animation/samplers/LinearVectorSampler";
 
 describe("SamplerTest", function() {
   it("Should instantiate properly", function() {
