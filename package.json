@@ -1,6 +1,6 @@
 {
   "name": "nekogirl-valhalla",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "js function helpers :D",
   "main": "index.ts",
   "directories": {
