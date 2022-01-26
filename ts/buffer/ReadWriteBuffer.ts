@@ -6,11 +6,13 @@ export class ReadWriteBuffer implements IReadWriteBuffer<ReadWriteBuffer> {
   constructor(buffer?: ArrayBuffer | number) {
     if (typeof buffer === "number") {
       this.buf = new ArrayBuffer(buffer);
-    } else {
+    } else if (buffer) {
       // copy lole
       // TODO: copy lole
       this.buf = new ArrayBuffer(buffer.byteLength);
       new Uint8Array(this.buf).set(new Uint8Array(buffer), 0);
+    } else {
+      this.buf = new ArrayBuffer(16);
     }
     
     this.view = new DataView(this.buf);
