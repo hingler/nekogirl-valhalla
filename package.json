@@ -6,7 +6,6 @@
   "directories": {
     "test": "test"
   },
-  "type": "module",
   "scripts": {
     "prepare": "npm run build-ts",
     "build-ts": "tsc -p tsconfig.json --declaration",
