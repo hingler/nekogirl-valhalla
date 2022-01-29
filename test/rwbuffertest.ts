@@ -31,4 +31,14 @@ describe("ReadWriteBufferTest", function() {
     expect(buffer.getUint32(10, true)).to.equal(2048);
     expect(buffer.getFloat32(14, true)).to.be.approximately(409.6, 0.001);
   });
+
+  it("Should return a size which reflects its contents", function() {
+    const buf = new ReadWriteBuffer(24);
+    expect(buf.capacity()).to.equal(24);
+    expect(buf.size()).to.equal(0);
+
+    buf.setFloat32(4, 12, true);
+    expect(buf.capacity()).to.equal(24);
+    expect(buf.size()).to.equal(8);
+  })
 })
