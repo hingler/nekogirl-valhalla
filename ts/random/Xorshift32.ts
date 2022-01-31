@@ -2,6 +2,7 @@
 // initial seed
 let s: number = 3662;
 const int32_max = 4294967295;
+const int31_off = 2147483648;
 // up to 53 bits in mantissa, i cant multiply more because the computer will be cross with me
 
 // prime number :D
@@ -20,6 +21,8 @@ export function xorshift32() {
   x ^= x << 5;
   // constrain to 32 bits
   x &= -1;
+
+  x += int31_off;
   let res = s;
   s = x;
   // introduce a large multiplication op to greeble our results a bit
@@ -38,7 +41,7 @@ export function xorshift32() {
  */
 export function xorshift32_float() {
   let res = xorshift32();
-  return res / (int32_max) + 0.5;
+  return res / (int32_max);
 }
 
 export function xorshift32_seed(seed: number) {
