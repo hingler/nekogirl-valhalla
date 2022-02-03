@@ -1,5 +1,8 @@
 import { IReadWriteBuffer } from "./IReadWriteBuffer";
 
+// todo: add some model-oriented wrappers here which contain attribute data
+// that way we can pick it up seamlessly on the engine's end!
+
 export class ReadWriteBuffer implements IReadWriteBuffer<ReadWriteBuffer> {
   private buf: ArrayBuffer;
   private view: DataView;
