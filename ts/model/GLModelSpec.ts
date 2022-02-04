@@ -56,6 +56,8 @@ export class GLModelSpec {
       "type": type,
       "offset": (offset ? offset : 0)
     };
+
+    this.index = data;
   }
 
   getAttributes() {
