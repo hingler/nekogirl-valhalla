@@ -1,4 +1,4 @@
-import { ReadWriteBuffer } from "ts/buffer/ReadWriteBuffer";
+import { ReadWriteBuffer } from "../buffer/ReadWriteBuffer";
 import { DataType } from "./DataType";
 
 export interface ReadonlyGLIndexSpec {

@@ -1,5 +1,5 @@
-import { IReadWriteBuffer } from "ts/buffer/IReadWriteBuffer";
-import { ReadWriteBuffer } from "ts/buffer/ReadWriteBuffer";
+import { IReadWriteBuffer } from "../buffer/IReadWriteBuffer";
+import { ReadWriteBuffer } from "../buffer/ReadWriteBuffer";
 import { DataType } from "./DataType";
 
 export interface ReadonlyGLAttributeSpec {

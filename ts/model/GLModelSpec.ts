@@ -1,4 +1,4 @@
-import { ReadWriteBuffer } from "ts/buffer/ReadWriteBuffer";
+import { ReadWriteBuffer } from "../buffer/ReadWriteBuffer";
 import { AttributeType } from "./AttributeType";
 import { DataType } from "./DataType";
 import { GLAttributeSpec, ReadonlyGLAttributeSpec } from "./GLAttributeSpec";
