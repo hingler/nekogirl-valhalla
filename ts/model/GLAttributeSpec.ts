@@ -1,6 +1,9 @@
+import { IReadWriteBuffer } from "../buffer/IReadWriteBuffer";
+import { ReadWriteBuffer } from "../buffer/ReadWriteBuffer";
 import { DataType } from "./DataType";
 
 export interface ReadonlyGLAttributeSpec {
+  readonly buffer: ReadWriteBuffer,
   readonly components: number,
   readonly type: DataType,
   readonly count: number,
