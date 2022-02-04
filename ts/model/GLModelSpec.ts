@@ -43,7 +43,7 @@ export class GLModelSpec {
       "type": type,
       "count": num,
       "offset": (offset === undefined ? 0 : offset),
-      "stride": (stride === undefined ? 0 : offset)
+      "stride": (stride === undefined ? 0 : stride)
     };
 
     this.attributeList.set(attrib, data);
