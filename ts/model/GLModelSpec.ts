@@ -2,6 +2,7 @@ import { ReadWriteBuffer } from "ts/buffer/ReadWriteBuffer";
 import { AttributeType } from "./AttributeType";
 import { DataType } from "./DataType";
 import { GLAttributeSpec, ReadonlyGLAttributeSpec } from "./GLAttributeSpec";
+import { GLIndexSpec, ReadonlyGLIndexSpec } from "./GLIndexSpec";
 
 /**
  * Wraps around a ReadWriteBuffer,
@@ -9,8 +10,8 @@ import { GLAttributeSpec, ReadonlyGLAttributeSpec } from "./GLAttributeSpec";
  * ported over to OpenGL
  */
 export class GLModelSpec {
-  private buffer: ReadWriteBuffer;
   private attributeList: Map<AttributeType, GLAttributeSpec>;
+  private index: GLIndexSpec;
   
   private static getByteSize(type: DataType) {
     switch (type) {
@@ -29,12 +30,15 @@ export class GLModelSpec {
     }
   }
   
-  constructor(buffer: ReadWriteBuffer) {
-    this.buffer = buffer;
+  constructor() {
+    this.attributeList = new Map();
   }
 
-  addAttribute(attrib: AttributeType, components: number, type: DataType, num: number, offset?: number, stride?: number) {
+  // store buffers in a set
+  // 
+  setAttribute(buffer: ReadWriteBuffer, attrib: AttributeType, components: number, type: DataType, num: number, offset?: number, stride?: number) {
     const data : GLAttributeSpec = {
+      "buffer": buffer,
       "components": components,
       "type": type,
       "count": num,
@@ -45,7 +49,20 @@ export class GLModelSpec {
     this.attributeList.set(attrib, data);
   }
 
+  setIndex(buffer: ReadWriteBuffer, type: DataType, count: number, offset?: number) {
+    const data : GLIndexSpec = {
+      "buffer": buffer,
+      "count": count,
+      "type": type,
+      "offset": (offset ? offset : 0)
+    };
+  }
+
   getAttributes() {
     return this.attributeList as ReadonlyMap<AttributeType, ReadonlyGLAttributeSpec>;
+  }
+
+  getIndex() {
+    return this.index as ReadonlyGLIndexSpec;
   }
 }
