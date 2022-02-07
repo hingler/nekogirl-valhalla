@@ -28,18 +28,16 @@ export class LRUMap<K, V> {
   insert(key: K, val: V) {
     // check if k is already in the keylist
     // if so, just update our value
-    let index = 0;
-    for (let k of this.keyList) {
-      if (key === k) {
-        this.entries.set(key, val);
-        this.keyList.remove(index);
-        // front is newest, back is oldest
-        // move index back to front
-        this.keyList.enqueue(key);
-        return;
+    if (this.entries.has(key)) {
+      for (let i = 0; i < this.keyList.length; i++) {
+        if (key === this.keyList.get(i)) {
+          const old = this.entries.get(key);
+          this.entries.set(key, val);
+          this.keyList.remove(i);
+          this.keyList.enqueue(key);
+          return old;
+        }
       }
-
-      index++;
     }
 
     // not already present
