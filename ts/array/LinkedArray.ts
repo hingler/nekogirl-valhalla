@@ -2,6 +2,8 @@
 // for our cache :D
 // note: designing an interface for all of these might do some good
 
+import { NekoArray } from "./NekoArray";
+
 interface LinkNode<V> {
   next: LinkNode<V>;
   value: V;
@@ -30,9 +32,10 @@ class LinkedArrayIterator<V> implements Iterator<V> {
   }
 }
 
-export class LinkedArray<V> {
+export class LinkedArray<V> implements NekoArray<V> {
   private root: LinkNode<V>;
   private end: LinkNode<V>;
+  // use map to speedup search?
   private length_: number;
   constructor() {
     this.root = null;
@@ -169,7 +172,7 @@ export class LinkedArray<V> {
     this.end = null;
   }
 
-  private findNode(ind: number) {
+  protected findNode(ind: number) {
     if (this.root === null) {
       return {
         "node": null,
