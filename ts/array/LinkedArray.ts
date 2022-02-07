@@ -24,7 +24,7 @@ class LinkedArrayIterator<V> implements Iterator<V> {
       this.node = this.node.next;
       return { 
         value: res,
-        done: this.node === null
+        done: false
       };
     }
   }
