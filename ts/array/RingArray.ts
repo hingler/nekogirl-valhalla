@@ -120,9 +120,9 @@ export class RingArray<T> implements NekoArray<T> {
   }
 
   private removeSlideStart(ind: number) : T {
-    const res = this.elements[ind];
+    const res = this.get(ind);
     for (let i = ind; i > 0; i--) {
-      this.elements[i] = this.elements[i - 1];
+      this.elements[(this.offset + i) % this.elements.length] = this.elements[(this.offset + i - 1) % this.elements.length];
     }
 
     this.size--;
@@ -132,9 +132,9 @@ export class RingArray<T> implements NekoArray<T> {
   }
 
   private removeSlideEnd(ind: number) : T {
-    const res = this.elements[ind];
+    const res = this.get(ind);
     for (let i = ind + 1; i < this.size; i++) {
-      this.elements[i - 1] = this.elements[i];
+      this.elements[(this.offset + i - 1) % this.elements.length] = this.elements[(this.offset + i) % this.elements.length];
     }
 
     this.size--;
