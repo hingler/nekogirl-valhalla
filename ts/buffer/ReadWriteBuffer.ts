@@ -7,6 +7,7 @@ export class ReadWriteBuffer implements IReadWriteBuffer<ReadWriteBuffer> {
   private buf: ArrayBuffer;
   private view: DataView;
   private size_: number;
+  private versionnum_: number;
   constructor(buffer?: ArrayBuffer | number) {
     if (typeof buffer === "number") {
       this.buf = new ArrayBuffer(buffer);
@@ -22,6 +23,7 @@ export class ReadWriteBuffer implements IReadWriteBuffer<ReadWriteBuffer> {
     this.view = new DataView(this.buf);
 
     this.size_ = 0;
+    this.versionnum_ = 0;
   }
 
   private ensureInBounds(offset: number) {
@@ -32,7 +34,7 @@ export class ReadWriteBuffer implements IReadWriteBuffer<ReadWriteBuffer> {
         throw Error("Too much space reserved for array buffer :sade:");
       }
 
-      new Uint8Array(bufNew).set(new Uint8Array(this.buf), 0);
+      new Uint8Array(bufNew).set(new Uint8Array(this.buf), 0); 
       this.buf = bufNew;
 
       this.view = new DataView(this.buf);
@@ -42,6 +44,12 @@ export class ReadWriteBuffer implements IReadWriteBuffer<ReadWriteBuffer> {
       // writing a byte to 0 should equate to 1 byte
       this.size_ = (offset + 1);
     }
+
+    this.versionnum_++;
+  }
+
+  get versionnum() {
+    return this.versionnum_;
   }
 
   getInt8(offset: number) {
@@ -125,6 +133,10 @@ export class ReadWriteBuffer implements IReadWriteBuffer<ReadWriteBuffer> {
   getRegionAsFloat32Array(offset: number, length: number) {
     this.ensureInBounds(offset + 4 * length - 1);
     return new Float32Array(this.buf, offset, length);
+  }
+
+  invalidate() {
+    this.versionnum_++;
   }
 
   size() {
