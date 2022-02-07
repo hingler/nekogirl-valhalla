@@ -1,16 +1,17 @@
 // iterable
 // update entries if pulled
 
-import { LinkedArray } from "../array/LinkedArray";
+import { NekoArray } from "ts/array/NekoArray";
+import { RingArray } from "ts/array/RingArray";
 
 export class LRUMap<K, V> {
-  private keyList : LinkedArray<K>;
+  private keyList : NekoArray<K>;
   private capacity: number;
   private entries: Map<K, V>;
 
   constructor(capacity: number) {
     this.capacity = capacity;
-    this.keyList = new LinkedArray();
+    this.keyList = new RingArray(capacity);
     this.entries = new Map();
   }
 
