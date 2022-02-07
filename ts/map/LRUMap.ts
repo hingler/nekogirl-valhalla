@@ -1,8 +1,8 @@
 // iterable
 // update entries if pulled
 
-import { NekoArray } from "ts/array/NekoArray";
-import { RingArray } from "ts/array/RingArray";
+import { NekoArray } from "../array/NekoArray";
+import { RingArray } from "../array/RingArray";
 
 export class LRUMap<K, V> {
   private keyList : NekoArray<K>;

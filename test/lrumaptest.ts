@@ -17,7 +17,6 @@ describe("LRUMap", function() {
     expect(map.get(1)).to.be.equal(1);
     expect(map.get(2)).to.be.equal(2);
     expect(map.get(3)).to.be.equal(3);
-
     map.insert(4, 4);
     expect(map.size).to.be.equal(4);
 
@@ -63,7 +62,6 @@ describe("LRUMap", function() {
     expect(map.size).to.be.equal(3);
     map.insert(3, 3);
     expect(map.size).to.be.equal(4);
-
     map.insert(0, 5);
     map.insert(4, 4);
 

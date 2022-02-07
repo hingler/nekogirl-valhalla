@@ -5,6 +5,7 @@ class RingArrayIterator<T> implements Iterator<T> {
   private ind: number;
   constructor(arr: RingArray<T>) {
     this.arr = arr;
+    this.ind = 0;
   }
 
   next() {

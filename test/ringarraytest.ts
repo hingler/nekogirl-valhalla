@@ -45,4 +45,16 @@ describe("RingArrayTest", function() {
       }
     }
   })
+
+  it("Should allow removal of items", function() {
+    const buf = new RingArray<number>(16);
+    buf.push(0);
+    buf.push(1);
+    buf.push(2);
+
+    buf.remove(1);
+
+    expect(buf.get(0)).to.be.equal(0);
+    expect(buf.get(1)).to.be.equal(2);
+  })
 });
