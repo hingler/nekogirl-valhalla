@@ -7,7 +7,7 @@
  */
  export interface Nestable<T> {
   getChildren() : Array<T>;
-  getParent() : Nestable<T>;
+  getParent() : T;
   getChild(id: number) : T;
   removeChild(id: number) : T;
   addChild(elem: T) : boolean;
