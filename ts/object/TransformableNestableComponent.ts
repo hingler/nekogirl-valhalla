@@ -9,6 +9,7 @@ export class TransformableNestableComponent<T extends TransformableNestable<T>> 
   constructor(self: T) {
     this.dirty = true;
     this.transformCache = mat4.create();
+    this.self = self;
   }
 
   getGlobalPosition() {
