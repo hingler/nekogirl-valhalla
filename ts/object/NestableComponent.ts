@@ -20,7 +20,7 @@ export class NestableComponent<T> {
   }
 
   getParent() {
-    return this.parent.self;
+    return (this.parent ? this.parent.self : null);
   }
 
   private findChild(id: number) {
