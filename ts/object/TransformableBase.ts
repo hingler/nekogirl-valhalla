@@ -1,6 +1,9 @@
 import { quat, ReadonlyQuat, ReadonlyVec3, vec3, vec4 } from "gl-matrix";
 import { Transformable } from "./Transformable";
 
+// syntactic sugar :D -- consistent naming scheme
+export type TransformableComponent = TransformableBase;
+
 export class TransformableBase implements Transformable {
   private rotation: quat;
   private position: vec3;
