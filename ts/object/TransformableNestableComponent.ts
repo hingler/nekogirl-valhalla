@@ -1,4 +1,4 @@
-import { mat4, vec3 } from "gl-matrix";
+import { mat4, ReadonlyVec3, vec3 } from "gl-matrix";
 import { TransformableNestable } from "./TransformableNestable";
 
 export class TransformableNestableComponent<T extends TransformableNestable<T>> {
@@ -18,7 +18,7 @@ export class TransformableNestableComponent<T extends TransformableNestable<T>> 
     return posLocal;
   }
 
-  lookAt(x: number | vec3, y?: number, z?: number) {
+  lookAt(x: number | ReadonlyVec3, y?: number, z?: number) {
     let dirVector : vec3 = (typeof x === "number" ? vec3.fromValues(x, y, z) : vec3.copy(vec3.create(), x));
     let pos = this.getGlobalPosition();
     // account for own offset: vector from camera to dest
