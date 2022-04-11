@@ -1,6 +1,6 @@
 import { IReadOnlyBuffer } from "./IReadOnlyBuffer";
 
-export interface IReadWriteBuffer<T extends IReadWriteBuffer<T>> extends IReadOnlyBuffer {
+export interface IReadWriteBuffer extends IReadOnlyBuffer {
   // DATAVIEW WRAPPERS
   setInt8(offset: number, value: number) : void;
   setUint8(offset: number, value: number) : void;
@@ -16,5 +16,5 @@ export interface IReadWriteBuffer<T extends IReadWriteBuffer<T>> extends IReadOn
   getRegionAsFloat32Array(offset: number, length: number) : Float32Array;
 
   arrayBuffer() : ArrayBuffer;
-  copy() : T;
+  copy() : IReadWriteBuffer;
 }
