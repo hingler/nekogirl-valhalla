@@ -1,3 +1,4 @@
 import { BufferInputStream } from "./BufferInputStream";
+import { BufferOutputStream } from "./BufferOutputStream";
 
-export { BufferInputStream };
+export { BufferInputStream, BufferOutputStream };

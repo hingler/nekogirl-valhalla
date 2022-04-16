@@ -1,3 +1,4 @@
 import { IInputStream } from "./IInputStream";
+import { IOutputStream } from "./IOutputStream";
 
-export { IInputStream };
+export { IInputStream, IOutputStream };
