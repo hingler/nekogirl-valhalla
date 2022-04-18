@@ -3,8 +3,7 @@
     "allowJs": true,
     "outDir": ".",
     "module": "CommonJS",
-    "target": "ES2015",
-    "baseUrl": ".",
+    "target": "ES2015"
   },
 
   "include": [

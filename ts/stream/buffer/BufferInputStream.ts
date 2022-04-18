@@ -1,4 +1,4 @@
-import { IReadOnlyBuffer } from "ts/buffer";
+import { IReadOnlyBuffer } from "../../buffer";
 import { IInputStream } from "../IInputStream";
 
 export class BufferInputStream implements IInputStream {
