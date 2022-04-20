@@ -118,6 +118,11 @@ export class HashSet<T extends Hashable<T>> implements Iterable<T>, ReadonlyHash
     return this.size_;
   }
 
+  clear() {
+    this.hashTable = [];
+    this.size_ = 0;
+  }
+
   private rehash() {
     const oldTable = this.hashTable;
     this.hashTable = new Array(Math.round(oldTable.length * 4.0 + 1));
