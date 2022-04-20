@@ -1,4 +1,5 @@
 import { Hashable } from "../Hashable";
+import { ReadonlyHashSet } from "./ReadonlyHashSet";
 
 const MAX_EPSILON_SET = 2.0;
 
@@ -46,7 +47,7 @@ class HashSetIterator<T extends Hashable<T>> implements Iterator<T> {
   }
 }
 
-export class HashSet<T extends Hashable<T>> implements Iterable<T> {
+export class HashSet<T extends Hashable<T>> implements Iterable<T>, ReadonlyHashSet<T> {
   private hashTable: Array<Array<T>>;
   private size_: number;
 
